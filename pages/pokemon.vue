@@ -4,7 +4,7 @@
       Pokemon
     </div>
     <div class="row">
-      <div v-for="item in pokemonList" :key="item.id" class="col-2 text-center">
+      <div v-for="item in orderedPokemon" :key="item.id" class="col-2 text-center">
         <div>
           {{ item.id }}
           <img :src="item.sprites.front_default">
@@ -19,6 +19,7 @@
 </template>
 
 <script>
+import _ from 'lodash'
 export default {
   data () {
     return {
@@ -29,13 +30,15 @@ export default {
   async fetch () {
     await this.$axios.$get('https://pokeapi.co/api/v2'
     ).then((response) => {
-      // console.log(response)
       this.manageUrl(response.pokemon)
     }).catch((error) => {
-      console.log(error)
+      alert(error)
     })
   },
   computed: {
+    orderedPokemon () {
+      return _.orderBy(this.pokemonList, 'id')
+    }
   },
   methods: {
     async manageUrl (url) {
@@ -45,7 +48,7 @@ export default {
         manageUrl = this.removeParam('limit', manageUrl)
         this.fetchAllPokemonList(manageUrl + `?limit=${this.limit}`)
       }).catch((error) => {
-        console.log(error)
+        alert(error)
       })
     },
     async fetchAllPokemonList (url) {
@@ -55,17 +58,16 @@ export default {
           this.fetchPokemonData(pokemon)
         })
       }).catch((error) => {
-        console.log(error)
+        alert(error)
       })
     },
     async fetchPokemonData (pokemon) {
       const url = pokemon.url
       await this.$axios.$get(url
       ).then((response) => {
-        // console.log(response)
         this.pokemonList.push(response)
       }).catch((error) => {
-        console.log(error)
+        alert(error)
       })
     },
     removeParam (key, sourceURL) {
