@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div>
+    <div class="text-center bold pb-3">
       Pokemon
     </div>
     <div class="row">

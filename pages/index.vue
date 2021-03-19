@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="text-center bold">
+    <div class="text-center bold pb-3">
       Form and Validation
     </div>
     <div class="d-flex justify-content-center">
