@@ -30,7 +30,7 @@ export default {
   async fetch () {
     await this.$axios.$get('https://pokeapi.co/api/v2'
     ).then((response) => {
-      this.manageUrl(response.pokemon)
+      this.fetchAllPokemonList(response.pokemon + `?limit=${this.limit}`)
     }).catch((error) => {
       alert(error)
     })
@@ -40,17 +40,28 @@ export default {
       return _.orderBy(this.pokemonList, 'id')
     }
   },
+  created () {
+    // this.initData()
+  },
   methods: {
-    async manageUrl (url) {
-      await this.$axios.$get(url
-      ).then((response) => {
-        let manageUrl = this.removeParam('offset', response.next)
-        manageUrl = this.removeParam('limit', manageUrl)
-        this.fetchAllPokemonList(manageUrl + `?limit=${this.limit}`)
-      }).catch((error) => {
-        alert(error)
-      })
-    },
+    // async initData () {
+    //   await this.$axios.$get('https://pokeapi.co/api/v2'
+    //   ).then((response) => {
+    //     this.manageUrl(response.pokemon)
+    //   }).catch((error) => {
+    //     alert(error)
+    //   })
+    // },
+    // async manageUrl (url) {
+    //   await this.$axios.$get(url
+    //   ).then((response) => {
+    //     let manageUrl = this.removeParam('offset', response.next)
+    //     manageUrl = this.removeParam('limit', manageUrl)
+    //     this.fetchAllPokemonList(manageUrl + `?limit=${this.limit}`)
+    //   }).catch((error) => {
+    //     alert(error)
+    //   })
+    // },
     async fetchAllPokemonList (url) {
       await this.$axios.$get(url
       ).then((response) => {
@@ -69,25 +80,24 @@ export default {
       }).catch((error) => {
         alert(error)
       })
-    },
-    removeParam (key, sourceURL) {
-      let rtn = sourceURL.split('?')[0]
-      let param
-      let paramsArr = []
-      const queryString = (sourceURL.includes('?')) ? sourceURL.split('?')[1] : ''
-      if (queryString !== '') {
-        paramsArr = queryString.split('&')
-        for (let i = paramsArr.length - 1; i >= 0; i -= 1) {
-          param = paramsArr[i].split('=')[0]
-          if (param === key) {
-            paramsArr.splice(i, 1)
-          }
-        }
-        if (paramsArr.length) { rtn = rtn + '?' + paramsArr.join('&') }
-      }
-      return rtn
     }
-
+    // removeParam (key, sourceURL) {
+    //   let rtn = sourceURL.split('?')[0]
+    //   let param
+    //   let paramsArr = []
+    //   const queryString = (sourceURL.includes('?')) ? sourceURL.split('?')[1] : ''
+    //   if (queryString !== '') {
+    //     paramsArr = queryString.split('&')
+    //     for (let i = paramsArr.length - 1; i >= 0; i -= 1) {
+    //       param = paramsArr[i].split('=')[0]
+    //       if (param === key) {
+    //         paramsArr.splice(i, 1)
+    //       }
+    //     }
+    //     if (paramsArr.length) { rtn = rtn + '?' + paramsArr.join('&') }
+    //   }
+    //   return rtn
+    // }
   }
 }
 </script>
