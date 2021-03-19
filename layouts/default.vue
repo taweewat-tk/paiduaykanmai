@@ -1,6 +1,10 @@
 <template>
   <div>
-    <Nuxt />
+    <Header />
+    <Menu />
+    <div class="container py-4">
+      <Nuxt />
+    </div>
   </div>
 </template>
 
