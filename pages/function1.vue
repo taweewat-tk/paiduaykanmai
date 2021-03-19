@@ -1,6 +1,11 @@
 <template>
   <div>
-    Function 1
+    <div class="text-center bold pb-3">
+      Function 1
+    </div>
+    <div>
+      <b-table :items="summaryData" class="mt-3 text-center table-bordered" outlined />
+    </div>
   </div>
 </template>
 
@@ -9,7 +14,28 @@ import examData from '~/static/exam-data.json'
 export default {
   data () {
     return {
-      pokemonList: examData
+      dataList: examData,
+      summaryData: []
+    }
+  },
+  created () {
+    this.findProductsWeight()
+  },
+  methods: {
+    findProductsWeight () {
+      this.dataList.forEach((data) => {
+        if (!data.is_editable_price) {
+          const productObj = {
+            name: data.name,
+            totalSubProductWeight: 0
+          }
+          data.products.forEach((product) => {
+            productObj.totalSubProductWeight += product.weight
+          })
+          this.summaryData.push(productObj)
+        }
+      })
+      console.log(this.summaryData)
     }
   }
 }
