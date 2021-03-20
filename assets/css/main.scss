@@ -1,3 +1,51 @@
+.vertical-middle{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.vc{
+    display: flex;
+    align-items: center;
+}
 .bold{
     font-weight: bold;
+    color:#454545;
+    font-size: 22px;
+}
+.b{
+    font-weight: bold;
+}
+.box {
+    background:#FFF;
+    margin:40px auto;
+}
+.card {
+    &-custom{
+        background: #fff;
+        border-radius: 6px;
+        border-color:#F1F1F1;
+    }
+    &-shadow {
+        -webkit-box-shadow: 0px 3px 23px 5px #F1F1F1; 
+        box-shadow: 0px 3px 23px 5px #F1F1F1;
+    }
+    &-pokemon {
+        &-shadow{
+            background: #fff;
+            border-color:#F1F1F1;
+            border-radius: 3px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+            transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+        }
+    }
+}
+.btn-submit{
+    border-radius: 4px !important;
+    color:#FFFFFF;
+    background-color: #65c6af !important;
+    border-color: #65c6af !important;
+    font-weight: bold;
+}
+button:focus{
+    outline:none !important;
 }
