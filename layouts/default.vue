@@ -1,9 +1,6 @@
 <template>
   <div>
     <Header />
-    <div class="pt-4">
-      <Menu />
-    </div>
     <div class="container py-4">
       <Nuxt />
     </div>

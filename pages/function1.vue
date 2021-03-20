@@ -1,10 +1,14 @@
 <template>
   <div>
-    <div class="text-center bold pb-3">
-      Function 1
-    </div>
-    <div>
-      <b-table :items="summaryData" class="mt-3 text-center table-bordered" outlined />
+    <div class="d-flex justify-content-center">
+      <div class="col-sm-6 card-custom card-shadow p-4">
+        <div class="text-center bold pb-3">
+          Function 1
+        </div>
+        <div>
+          <b-table :items="summaryData" class="text-center table-bordered" outlined />
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -25,7 +29,7 @@ export default {
     // get name and calculate weight of products
     findProductsWeight () {
       this.dataList.forEach((data) => {
-        if (!data.is_editable_price) {
+        if (data.is_editable_price === false) {
           const productObj = {
             name: data.name,
             totalSubProductWeight: 0
@@ -40,3 +44,13 @@ export default {
   }
 }
 </script>
+
+<style>
+thead{
+  background:#1ABC9C;
+  color:#FFFFFF
+}
+table{
+  border-radius: 20px;
+}
+</style>
