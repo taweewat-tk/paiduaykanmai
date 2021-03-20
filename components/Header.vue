@@ -1,10 +1,10 @@
 <template>
-  <div class="d-flex justify-content-between p-4">
+  <div class="d-flex justify-content-between p-4 vc">
     <div class="logo">
       Front-End Developer
     </div>
 
-    <div class="d-flex justify-content-center">
+    <div v-if="$device.isDesktop" class="d-flex justify-content-end">
       <b-nav pills align="center">
         <b-nav-item to="/" exact exact-active-class="active">
           Home
@@ -22,6 +22,36 @@
           Function 3
         </b-nav-item>
       </b-nav>
+    </div>
+    <div v-if="!$device.isDesktop">
+      <b-dropdown
+        id="dropdown-right"
+        right
+        text="Menu"
+        class="m-md-2"
+        toggle-class="btn-submit"
+        menu-class="menu"
+      >
+        <b-dropdown-item to="/">
+          Home
+        </b-dropdown-item>
+        <b-dropdown-divider />
+        <b-dropdown-item to="/pokemon">
+          Pokemon
+        </b-dropdown-item>
+        <b-dropdown-divider />
+        <b-dropdown-item to="/function1">
+          Function 1
+        </b-dropdown-item>
+        <b-dropdown-divider />
+        <b-dropdown-item to="/function2">
+          Function 2
+        </b-dropdown-item>
+        <b-dropdown-divider />
+        <b-dropdown-item to="/function3">
+          Function 3
+        </b-dropdown-item>
+      </b-dropdown>
     </div>
   </div>
 </template>
@@ -45,5 +75,10 @@
   .nav-link:hover{
     color: #3e8e93 !important;
     background-color: #fff !important;
+  }
+  .dropdown-item:active {
+    color: #fff;
+    text-decoration: none;
+    background-color: #65c6af !important;
   }
 </style>
