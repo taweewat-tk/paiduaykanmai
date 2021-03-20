@@ -154,6 +154,7 @@ export default {
       lastname: {
         required
       },
+      // email input must be format test@test.com
       email: {
         required,
         email
@@ -161,6 +162,7 @@ export default {
       password: {
         required
       },
+      // verifyPassword input must be same as password input
       verifyPassword: {
         required,
         sameAsPassword: sameAs('password')

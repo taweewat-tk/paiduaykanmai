@@ -22,6 +22,7 @@ export default {
     this.findProductsWeight()
   },
   methods: {
+    // get name and calculate weight of products
     findProductsWeight () {
       this.dataList.forEach((data) => {
         if (!data.is_editable_price) {
@@ -35,7 +36,6 @@ export default {
           this.summaryData.push(productObj)
         }
       })
-      console.log(this.summaryData)
     }
   }
 }

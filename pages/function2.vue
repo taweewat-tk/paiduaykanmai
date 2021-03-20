@@ -7,7 +7,16 @@
       Full Datetime : {{ fullDateTime }}
     </div>
     <div>
-      Days : {{ day }}
+      Thai format datetime : {{ thaiDateTime }}
+    </div>
+    <div>
+      The number of days in this month : {{ dayInThisMonth }}
+    </div>
+    <div>
+      This quarter of the month : {{ quarterByMonth }}
+    </div>
+    <div>
+      Unix timestamp : {{ unixTimeStamp }}
     </div>
   </div>
 </template>
@@ -23,11 +32,21 @@ export default {
     fullDateTime () {
       return this.formatDateTime(this.date)
     },
-    day () {
-      return this.formatDay(this.date)
+    dayInThisMonth () {
+      return this.formatDaysInMonth(this.date)
+    },
+    quarterByMonth () {
+      return this.formatQuarterByMonth(this.date)
+    },
+    unixTimeStamp () {
+      return this.formatUnixTimeStamp(this.date)
+    },
+    thaiDateTime () {
+      return this.formatThaiDateTime(this.date)
     }
   },
   methods: {
+    // format datetime ex.10/08/2020 14:54
     formatDateTime (date) {
       const newDate = new Date(date)
       const year = newDate.getFullYear()
@@ -38,10 +57,34 @@ export default {
         ('00' + newDate.getMinutes()).slice(-2)
       return dateStr
     },
-    formatDay (date) {
+    // Thai datetime format ex. 10 สิงหาคม 2563
+    formatThaiDateTime (date) {
       const newDate = new Date(date)
-      const day = newDate.getDay()
-      return day
+      const year = newDate.getFullYear() + 543
+      const monthsTH = ['มกราคม', 'กุมภาพันธ์', 'มีนาคม', 'เมษายน', 'พฤษภาคม', 'มิถุนายน', 'กรกฎาคม', 'สิงหาคม', 'กันยายน', 'ตุลาคม', 'พฤศจิกายน', 'ธันวาคม']
+      const month = ('00' + (newDate.getMonth() + 1)).slice(-2)
+      const dateStr =
+        ('00' + newDate.getDate()).slice(-2) + ' ' +
+        monthsTH[Number(month) - 1] + ' ' + year
+      return dateStr
+    },
+    // days inmonth
+    formatDaysInMonth (date) {
+      const newDate = new Date(date)
+      const year = newDate.getFullYear()
+      const month = ('00' + (newDate.getMonth() + 1)).slice(-2)
+      return new Date(year, Number(month), 0).getDate()
+    },
+    // Quarter
+    formatQuarterByMonth (date) {
+      const newDate = new Date(date)
+      const month = ('00' + (newDate.getMonth() + 1)).slice(-2)
+      return Math.floor((Number(month) - 1) / 3) + 1
+    },
+    // Unix timestamp
+    formatUnixTimeStamp (date) {
+      const newDate = new Date(date)
+      return Math.round(newDate.getTime() / 1000.0)
     }
   }
 }

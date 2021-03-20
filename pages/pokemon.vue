@@ -6,9 +6,7 @@
     <div class="row">
       <div v-for="item in orderedPokemon" :key="item.id" class="col-2 text-center">
         <div>
-          {{ item.id }}
           <img :src="item.sprites.front_default">
-          <!-- {{ item.sprites }} -->
         </div>
         <div>
           {{ item.name }}
@@ -19,6 +17,7 @@
 </template>
 
 <script>
+// using for sort id of pokemon
 import _ from 'lodash'
 export default {
   data () {
@@ -28,40 +27,23 @@ export default {
     }
   },
   async fetch () {
+    // first fetch pokemon's data from https://pokeapi.co/api/v2
     await this.$axios.$get('https://pokeapi.co/api/v2'
     ).then((response) => {
+      // limit to find pokemon id 1-104
       this.fetchAllPokemonList(response.pokemon + `?limit=${this.limit}`)
     }).catch((error) => {
       alert(error)
     })
   },
   computed: {
+    // sort pokemon by id
     orderedPokemon () {
       return _.orderBy(this.pokemonList, 'id')
     }
   },
-  created () {
-    // this.initData()
-  },
   methods: {
-    // async initData () {
-    //   await this.$axios.$get('https://pokeapi.co/api/v2'
-    //   ).then((response) => {
-    //     this.manageUrl(response.pokemon)
-    //   }).catch((error) => {
-    //     alert(error)
-    //   })
-    // },
-    // async manageUrl (url) {
-    //   await this.$axios.$get(url
-    //   ).then((response) => {
-    //     let manageUrl = this.removeParam('offset', response.next)
-    //     manageUrl = this.removeParam('limit', manageUrl)
-    //     this.fetchAllPokemonList(manageUrl + `?limit=${this.limit}`)
-    //   }).catch((error) => {
-    //     alert(error)
-    //   })
-    // },
+    // get url from each pokemon (id 1-104)
     async fetchAllPokemonList (url) {
       await this.$axios.$get(url
       ).then((response) => {
@@ -72,6 +54,7 @@ export default {
         alert(error)
       })
     },
+    // get data of each pokemon
     async fetchPokemonData (pokemon) {
       const url = pokemon.url
       await this.$axios.$get(url
@@ -81,23 +64,6 @@ export default {
         alert(error)
       })
     }
-    // removeParam (key, sourceURL) {
-    //   let rtn = sourceURL.split('?')[0]
-    //   let param
-    //   let paramsArr = []
-    //   const queryString = (sourceURL.includes('?')) ? sourceURL.split('?')[1] : ''
-    //   if (queryString !== '') {
-    //     paramsArr = queryString.split('&')
-    //     for (let i = paramsArr.length - 1; i >= 0; i -= 1) {
-    //       param = paramsArr[i].split('=')[0]
-    //       if (param === key) {
-    //         paramsArr.splice(i, 1)
-    //       }
-    //     }
-    //     if (paramsArr.length) { rtn = rtn + '?' + paramsArr.join('&') }
-    //   }
-    //   return rtn
-    // }
   }
 }
 </script>
