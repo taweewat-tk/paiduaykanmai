@@ -4,7 +4,7 @@
       Pokemon
     </div>
     <div class="row">
-      <div v-for="item in orderedPokemon" :key="item.id" class="card-pokemon-shadow col-2 text-center">
+      <div v-for="item in orderedPokemon" :key="item.id" class="card-pokemon-shadow col-4 col-md-2 text-center">
         <div>
           <img :src="item.sprites.front_default">
         </div>
@@ -77,5 +77,6 @@ export default {
     color:#FFFFFF;
     border-radius: 10px;
     font-size: 16px;
+    width: 120px;
   }
 </style>

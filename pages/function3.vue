@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="d-flex justify-content-center">
-      <b-form class="col-7 card-custom card-shadow p-4" @submit.stop.prevent="onSubmit">
+      <b-form class="col-sm-6 card-custom card-shadow p-4" @submit.stop.prevent="onSubmit">
         <div class="text-center bold pb-3">
           Function 3
         </div>
@@ -50,7 +50,7 @@ export default {
         this.arrNumber = (this.form.strNumber).split(',')
       } else {
         this.arrNumber = null
-        this.arrSort = '[]'
+        this.arrSort = null
       }
     },
     // only input number and comma

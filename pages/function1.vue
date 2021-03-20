@@ -1,10 +1,14 @@
 <template>
   <div>
-    <div class="text-center bold pb-3">
-      Function 1
-    </div>
-    <div>
-      <b-table :items="summaryData" class="mt-3 text-center table-bordered card-shadow" outlined />
+    <div class="d-flex justify-content-center">
+      <div class="col-sm-6 card-custom card-shadow p-4">
+        <div class="text-center bold pb-3">
+          Function 1
+        </div>
+        <div>
+          <b-table :items="summaryData" class="text-center table-bordered" outlined />
+        </div>
+      </div>
     </div>
   </div>
 </template>

@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="row card-custom card-shadow p-4">
-      <div v-if="showResult" class="col-8 vertical-middle">
+      <div v-if="showResult" class="col-md-8 vertical-middle">
         <!-- Result -->
         <div class="vc">
           <div class="pr-3">
@@ -20,10 +20,10 @@
           </div>
         </div>
       </div>
-      <div v-if="!showResult" class="col-8 vertical-middle">
+      <div v-if="!showResult" class="col-md-8 vertical-middle">
         <img src="~/assets/images/index.jpg" width="500px">
       </div>
-      <div class="col-4">
+      <div class="col-md-4">
         <b-form @submit.stop.prevent="onSubmit">
           <div class="text-center bold pb-3">
             Form and Validation
