@@ -1,22 +1,24 @@
 <template>
-  <div>
-    <div class="text-center bold pb-3">
-      Function 2
-    </div>
-    <div>
-      Full Datetime : {{ fullDateTime }}
-    </div>
-    <div>
-      Thai format datetime : {{ thaiDateTime }}
-    </div>
-    <div>
-      The number of days in this month : {{ dayInThisMonth }}
-    </div>
-    <div>
-      This quarter of the month : {{ quarterByMonth }}
-    </div>
-    <div>
-      Unix timestamp : {{ unixTimeStamp }}
+  <div class="row justify-content-lg-center">
+    <div class="col-6 card-custom card-shadow p-4">
+      <div class="text-center bold pb-3">
+        Function 2
+      </div>
+      <div>
+        Full datetime : <b>{{ fullDateTime }}</b>
+      </div>
+      <div>
+        Thai format datetime : <b>{{ thaiDateTime }}</b>
+      </div>
+      <div>
+        The number of days in this month : <b>{{ dayInThisMonth }}</b>
+      </div>
+      <div>
+        This quarter of the month : <b>{{ quarterByMonth }}</b>
+      </div>
+      <div>
+        Unix timestamp : <b>{{ unixTimeStamp }}</b>
+      </div>
     </div>
   </div>
 </template>

@@ -1,10 +1,10 @@
 <template>
   <div>
-    <div class="text-center bold pb-3">
-      Function 3
-    </div>
     <div class="d-flex justify-content-center">
-      <b-form class="col-7" @submit.stop.prevent="onSubmit">
+      <b-form class="col-7 card-custom card-shadow p-4" @submit.stop.prevent="onSubmit">
+        <div class="text-center bold pb-3">
+          Function 3
+        </div>
         <b-form-group id="input-group-arrNumber" label="Input array of numbers (only numbers,comma and ,, = 0)" label-for="arrNumber">
           <b-form-input
             id="arrNumber"
@@ -14,11 +14,11 @@
             @keydown="onKeyDown"
           />
         </b-form-group>
-        <b-button type="submit" variant="primary">
+        <b-button type="submit" variant="success" class="btn-submit btn-block">
           Check
         </b-button>
         <div class="bold pt-4">
-          Second Max Number is {{ getSecondMax }}
+          Second max number is {{ getSecondMax }}
         </div>
         <div>
           Sorted array is {{ arrSort }}
@@ -84,14 +84,17 @@ export default {
         const uniqArr = [...new Set(arr)]
         arr = uniqArr
 
-        if (arr[arr.length - 2]) {
+        if (arr[arr.length - 2] != null) {
           // second max number
           secondMax = arr[arr.length - 2]
-        } else if (arr[arr.length - 1]) {
+          return secondMax
+        } else if (arr[arr.length - 1] != null) {
           // condition for array length is 1
           secondMax = arr[arr.length - 1]
+          return secondMax
         } else {
           secondMax = null
+          return secondMax
         }
       }
       return secondMax
