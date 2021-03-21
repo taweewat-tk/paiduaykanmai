@@ -5,7 +5,7 @@
         <div class="text-center bold pb-3">
           Function 3
         </div>
-        <b-form-group id="input-group-arrNumber" label="Input array of numbers (only numbers,comma and ,, = 0)" label-for="arrNumber">
+        <b-form-group id="input-group-arrNumber" label="Input array of numbers (only numbers, comma and ,, equal to 0,0,0)" label-for="arrNumber">
           <b-form-input
             id="arrNumber"
             v-model="form.strNumber"
