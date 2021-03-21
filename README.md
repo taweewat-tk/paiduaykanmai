@@ -3,8 +3,10 @@
 * CSS Framework : Bootstrap Vue
 * Frontend : NuxtJS
 
+<p align="center">
 <a href="https://nuxtjs.org/"><img src="https://miro.medium.com/max/1200/1*NTGKGfvCt9bX_S8qqCBgBQ.png" height="200px"></a>
 <a href="https://bootstrap-vue.org/"><img src="https://bootstrap-vue.org/_nuxt/icons/icon_512x512.67aef2.png" height="200px"></a>
+</p>
 
 ## Deployment
 * Heroku
