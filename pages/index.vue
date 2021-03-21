@@ -3,18 +3,20 @@
     <div class="row card-custom card-shadow p-4 space-card">
       <div v-if="showResult" class="col-md-8 vertical-middle">
         <!-- Result -->
-        <div class="vc info">
-          <div class="pr-3">
+        <div class="info">
+          <div>
             <img src="~/assets/images/user-96.png" class="user">
           </div>
-          <div>
+          <div class="text-center pt-2">
             <div class="text-name">
               {{ preview.firstname }} {{ preview.lastname }}
             </div>
             <div class="vc">
               <img src="~/assets/images/mail-24.png" class="mr-1" width="18px">
               {{ preview.email }}
-              <img src="~/assets/images/user-48.png" class="mr-1 ml-4" width="18px">
+            </div>
+            <div class="vc">
+              <img src="~/assets/images/user-48.png" class="mr-1" width="18px">
               {{ preview.gender }}
             </div>
           </div>
@@ -220,7 +222,10 @@ export default {
     max-width: 500px;
   }
   .user{
-    width:90px;
+    width:96px;
+  }
+  .info{
+    text-align: center;
   }
   .space-card{
     margin-right: 0px;
@@ -237,10 +242,10 @@ export default {
       max-width: 350px;
     }
     .user{
-      width:50px;
+      width:96px;
     }
     .text-name{
-      font-size: 16px;
+      font-size: 20px;
       font-weight: bold;
     }
     .info{
