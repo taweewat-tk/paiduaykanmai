@@ -1,11 +1,11 @@
 <template>
   <div>
-    <div class="row card-custom card-shadow p-4">
+    <div class="row card-custom card-shadow p-4 space-card">
       <div v-if="showResult" class="col-md-8 vertical-middle">
         <!-- Result -->
-        <div class="vc">
+        <div class="vc info">
           <div class="pr-3">
-            <img src="~/assets/images/user-96.png" width="90px">
+            <img src="~/assets/images/user-96.png" class="user">
           </div>
           <div>
             <div class="text-name">
@@ -21,7 +21,7 @@
         </div>
       </div>
       <div v-if="!showResult" class="col-md-8 vertical-middle">
-        <img src="~/assets/images/index.jpg" width="500px">
+        <img src="~/assets/images/index.jpg" class="illus">
       </div>
       <div class="col-md-4">
         <b-form @submit.stop.prevent="onSubmit">
@@ -215,5 +215,36 @@ export default {
   }
   img{
     opacity: 0.9;
+  }
+  .illus{
+    max-width: 500px;
+  }
+  .user{
+    width:90px;
+  }
+  .space-card{
+    margin-right: 0px;
+    margin-left: 0px;
+  }
+  @media only screen and (max-width: 768px) {
+    .text-name{
+      font-size: 20px;
+      font-weight: bold;
+    }
+  }
+  @media only screen and (max-width: 468px) {
+    .illus{
+      max-width: 350px;
+    }
+    .user{
+      width:50px;
+    }
+    .text-name{
+      font-size: 16px;
+      font-weight: bold;
+    }
+    .info{
+      padding-bottom: 1rem;
+    }
   }
 </style>
